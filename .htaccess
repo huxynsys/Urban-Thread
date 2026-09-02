@@ -1,0 +1,21 @@
+# Urban Thread - Apache hardening (XAMPP/Apache compatible)
+# NOTE: "database.sql" is a development seed file shipped with this project.
+# It contains the schema and demo credentials and must NEVER be served.
+
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Block direct access to the database seed/backup and dotfiles
+<FilesMatch "\.(sql|sql\.gz|bak|env|ini|log|md)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

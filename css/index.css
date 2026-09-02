@@ -1,0 +1,239 @@
+/* css/index.css - Page-specific styles for index.php */
+/* BACKEND_CLUE: No backend changes needed - pure frontend styling */
+
+/* Featured Products */
+.featured-products .card {
+  border-radius: 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 8px #eee;
+  transition: box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
+}
+.featured-products .card:hover {
+  box-shadow: 0 8px 32px #bbb;
+  transform: scale(1.04) translateY(-3px);
+}
+.btn-outline-dark, .btn-outline-light {
+  transition: background 0.16s, color 0.16s;
+}
+.btn-outline-dark:hover, .btn-outline-light:hover {
+  background: #ffd600 !important;
+  color: #23242a !important;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+}
+.banner-shadow {
+  text-shadow: 0 4px 16px rgba(0,0,0,0.34), 0 1px 2px rgba(0,0,0,0.11);
+}
+.carousel-item.banner-1 {
+  background: url('../img/banner1.jpg') center/cover no-repeat;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-item.banner-2 {
+  background: url('../img/banner2.jpg') center/cover no-repeat;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-item.banner-3 {
+  background: url('../img/banner3.jpg') center/cover no-repeat;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-btn {
+  box-shadow: 0 2px 18px #2228;
+  transition: background 0.22s, transform 0.18s;
+}
+.hero-btn:hover {
+  transform: translateY(-2px) scale(1.07);
+  background: #007bffc2 !important;
+  color: #fff !important;
+}
+
+/* Social icons bar for hero */
+.social-media-bar {
+  z-index: 20;
+}
+.social-icon {
+  transition: color 0.2s, transform 0.18s;
+}
+.social-icon:hover {
+  color: #ffd600 !important;
+  transform: scale(1.19) rotate(-8deg);
+}
+
+/* Benefits Section Styling */
+.benefit-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px #eee;
+  margin-bottom: 10px;
+  transition: box-shadow 0.16s, transform 0.16s, border 0.15s;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.benefit-card-clickable:hover {
+  box-shadow: 0 4px 24px #ccc;
+  transform: scale(1.04) rotate(-1deg);
+  border: 2px solid #007bff;
+}
+.benefit-card .benefit-icon {
+  font-size: 2.4em;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+.benefit-card h5 {
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 6px;
+  font-size: 1.18em;
+}
+.benefit-card p {
+  color: #444;
+  font-size: 1.01em;
+}
+
+/* Attractive Modal Styles */
+.benefit-modal-content {
+  border-radius: 20px;
+  box-shadow: 0 8px 48px #007bff44;
+  background: linear-gradient(135deg, #e5f2ff 0%, #fff 60%, #ffd600 100%);
+  border: 2px solid #007bff;
+  animation: popModal 0.35s;
+}
+@keyframes popModal {
+  0% { transform: scale(0.8); opacity: 0; }
+  80% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.benefit-modal-header {
+  background: linear-gradient(90deg, #007bff 40%, #ffd600 100%);
+  color: #fff;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 2px 18px #007bff22;
+  border-bottom: none;
+}
+.benefit-modal-header .modal-title {
+  font-weight: bold;
+  font-size: 1.28em;
+  letter-spacing: 1px;
+}
+.benefit-modal-body {
+  background: transparent;
+}
+.benefit-modal-body table {
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-bottom: 0;
+  background: #fff;
+  box-shadow: 0 1px 8px #ffd60033;
+  font-size: 1.05em;
+}
+.benefit-modal-body th {
+  background: #e5f2ff;
+  color: #007bff;
+  font-weight: bold;
+}
+.benefit-modal-body td {
+  background: #fffbe7;
+  color: #23242a;
+}
+
+/* Floating Buttons & Chat Modal */
+.btn-floating-top {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 999;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px #bbb;
+  opacity: 0.95;
+  transition: background 0.16s, box-shadow 0.16s;
+}
+.btn-floating-top:hover {
+  background: #ffd600 !important;
+  box-shadow: 0 8px 24px #2228;
+}
+.btn-floating-chat {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1000;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px #bbb;
+  opacity: 0.97;
+  transition: background 0.16s, box-shadow 0.16s;
+}
+.btn-floating-chat:hover {
+  background: #ffd600 !important;
+  box-shadow: 0 8px 24px #2228;
+}
+.modal-dialog-bottom {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 430px;
+  min-width: 300px;
+}
+.modal-content {
+  border-radius: 16px 16px 0 0;
+}
+.chat-messages {
+  min-height: 180px;
+  max-height: 300px;
+  overflow-y: auto;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+}
+.chat-msg {
+  margin-bottom: 10px;
+}
+.chat-msg-user {
+  background: #d1e7ff;
+  padding: 7px 14px;
+  border-radius: 13px;
+  display: inline-block;
+  max-width: 80%;
+}
+.chat-msg-ai {
+  background: #e2e3e5;
+  padding: 7px 14px;
+  border-radius: 13px;
+  display: inline-block;
+  max-width: 80%;
+}
+@media (max-width: 767px) {
+  .hero-section { padding: 2rem 0; }
+  .featured-products .card { margin-bottom: 12px; }
+  .btn-floating-top, .btn-floating-chat { right: 12px; }
+  .modal-dialog-bottom { max-width: 100vw; }
+  .navbar-search { max-width: 98vw; }
+  .carousel-item.banner-1, .carousel-item.banner-2, .carousel-item.banner-3 { min-height: 260px; }
+}

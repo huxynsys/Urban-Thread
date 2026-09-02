@@ -1,0 +1,592 @@
+:root {
+    --navbar-bg: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+    --navbar-border: #ffc107;
+    --nav-link-color: rgba(255, 255, 255, 0.85);
+    --nav-link-hover-bg: rgba(255, 193, 7, 0.15);
+    --nav-link-active-bg: linear-gradient(45deg, #ffc107, #ffda6a);
+    --cart-badge-bg: #ff4757;
+    --circle-color: rgba(255, 193, 7, 0.25);
+}
+
+/* Main Navbar Container */
+.navbar {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 0.8rem 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: visible !important; /* CHANGE: Ensure navbar doesn't clip circles */
+}
+
+.navbar.scrolled {
+  padding: 0.6rem 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 18, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: visible !important;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: visible !important; /* CHANGE: Prevent container clipping */
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+/* Navbar Toggler (Mobile Menu Button) */
+.navbar-toggler {
+  border: 2px solid rgba(255, 193, 7, 0.7);
+  padding: 0.35rem 0.6rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+  border-color: var(--navbar-border);
+}
+
+.navbar-toggler:hover {
+  background-color: var(--nav-link-hover-bg);
+  border-color: var(--navbar-border);
+  transform: scale(1.05);
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+  filter: brightness(1.3);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 193, 7, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  transition: all 0.3s ease;
+}
+
+/* Navbar Navigation */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: visible !important; /* CHANGE: Prevent clipping circles */
+}
+
+.nav-item {
+  position: relative;
+  margin: 0 1px;
+  overflow: visible !important; /* CHANGE: Allow circle to overflow above */
+}
+
+/* CHANGE: NEW - Circular hover effect above nav links */
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, var(--circle-color) 0%, rgba(255, 193, 7, 0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.nav-item:hover::before {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  top: -40px;
+}
+
+/* CHANGE: Alternative - Circle behind the nav link (different visual) */
+/* Uncomment this block and comment the one above for circle behind instead of above */
+/*
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.2) 0%, rgba(255, 193, 7, 0) 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.nav-item:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+*/
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px !important;
+  border-radius: 50px;
+  font-weight: 500;
+  color: var(--nav-link-color) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 10; /* CHANGE: Ensure link is above the circle */
+  font-size: 0.95rem;
+  overflow: visible !important;
+}
+
+/* CHANGE: Removed the old sliding ::before effect - replaced with circle above */
+/* Old effect is commented out below */
+/*
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--nav-link-hover-bg);
+  transition: left 0.3s ease;
+  border-radius: 50px;
+  z-index: -1;
+}
+
+.nav-link:hover::before {
+  left: 0;
+}
+*/
+
+.nav-link i {
+  font-size: 1.15rem;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-link:hover i {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--navbar-border);
+}
+
+.nav-link:hover {
+  color: white !important;
+  transform: translateY(-3px);
+  /* box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2); REMOVED to prevent clipping */
+}
+
+.nav-link.active {
+  background: var(--nav-link-active-bg);
+  color: #0f0f1a !important;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #0f0f1a, transparent);
+  border-radius: 2px;
+}
+
+.nav-link.active i {
+  color: #0f0f1a;
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
+}
+
+.nav-link-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Cart Count Badge */
+.nav-item .position-relative {
+  position: relative;
+  overflow: visible !important;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 50%;
+  background: var(--cart-badge-bg);
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.5), 0 0 0 3px rgba(15, 15, 26, 0.9);
+  border: 2px solid white;
+  animation: pulse-cart 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.mobile-action-links {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+#cart-count:hover {
+  transform: scale(1.25);
+  box-shadow: 0 6px 16px rgba(255, 71, 87, 0.6), 0 0 0 4px rgba(15, 15, 26, 0.9);
+}
+
+@keyframes pulse-cart {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.5), 0 0 0 3px rgba(15, 15, 26, 0.9);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.7), 0 0 0 5px rgba(255, 71, 87, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.5), 0 0 0 3px rgba(15, 15, 26, 0.9);
+  }
+}
+
+/* Auth Area & Dropdown */
+#navbar-auth-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: visible !important;
+}
+
+#navbar-auth-area .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: var(--nav-link-active-bg);
+  color: #0f0f1a;
+  border: none;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+#navbar-auth-area .dropdown-toggle:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+#navbar-auth-area .dropdown-toggle:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#navbar-auth-area .dropdown-toggle i {
+  font-size: 1.15rem;
+  color: #0f0f1a;
+  transition: transform 0.3s ease;
+}
+
+#navbar-auth-area .dropdown-toggle:hover i {
+  transform: rotate(180deg);
+}
+
+#navbar-auth-area .dropdown-menu {
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 12px 8px;
+  margin-top: 12px;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-width: 220px;
+  border: 1px solid rgba(255, 193, 7, 0.15);
+  animation: dropdownSlide 0.3s ease;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#navbar-auth-area .dropdown-item {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin: 4px 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  position: relative;
+  overflow: hidden;
+}
+
+#navbar-auth-area .dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--nav-link-active-bg);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  border-radius: 3px 0 0 3px;
+}
+
+#navbar-auth-area .dropdown-item:hover {
+  background: var(--nav-link-hover-bg);
+  color: var(--navbar-border);
+  transform: translateX(5px);
+}
+
+#navbar-auth-area .dropdown-item:hover::before {
+  transform: scaleY(1);
+}
+
+#navbar-auth-area .dropdown-item i {
+  width: 22px;
+  text-align: center;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+}
+
+#navbar-auth-area .dropdown-item:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+#navbar-auth-area .dropdown-divider {
+  margin: 10px 0;
+  background-color: rgba(255, 193, 7, 0.1);
+  height: 2px;
+  border-radius: 1px;
+}
+
+#navbar-auth-area .btn-outline-dark {
+  padding: 10px 22px;
+  border-radius: 50px;
+  background: var(--nav-link-active-bg);
+  color: #0f0f1a;
+  border: none;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+#navbar-auth-area .btn-outline-dark:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+#navbar-auth-area .btn-outline-dark:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive - Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: center;
+    padding: 20px 0;
+    flex-direction: column;
+    gap: 8px;
+    overflow: visible !important;
+  }
+  
+  .nav-item::before {
+    display: none; /* CHANGE: Hide circles on mobile for cleaner look */
+  }
+  
+  .nav-link {
+    justify-content: center;
+    margin: 6px 0;
+    padding: 12px 20px !important;
+  }
+  
+  #navbar-auth-area {
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  #navbar-auth-area .dropdown-toggle,
+  #navbar-auth-area .btn-outline-dark {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  #cart-count {
+    min-width: 22px;
+    height: 22px;
+    font-size: 0.7rem;
+    top: -6px;
+    right: -8px;
+    padding: 0 5px;
+    border: 2px solid white;
+    line-height: 22px;
+  }
+}
+
+/* Responsive - Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  .nav-link {
+    padding: 10px 14px !important;
+    font-size: 0.9rem;
+  }
+  
+  .nav-link i {
+    font-size: 1.1rem;
+  }
+  
+  #cart-count {
+    min-width: 22px;
+    height: 22px;
+    font-size: 0.65rem;
+    top: -5px;
+    right: -7px;
+    padding: 0 4px;
+    border: 2px solid white;
+    line-height: 22px;
+  }
+  
+  #navbar-auth-area .dropdown-toggle,
+  #navbar-auth-area .btn-outline-dark {
+    padding: 9px 16px;
+    font-size: 0.9rem;
+  }
+
+  .mobile-action-links {
+    display: flex;
+  }
+
+  .mobile-action-links .mobile-quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.08);
+    color: white !important;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+
+  .mobile-action-links .mobile-quick-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-1px);
+  }
+
+  .mobile-action-links .mobile-cart-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    line-height: 20px;
+    border: 2px solid white;
+  }
+
+  .navbar-collapse .shop-link,
+  .navbar-collapse .cart-link {
+    display: none !important;
+  }
+}
+
+/* Responsive - Small Mobile (max-width: 575px) */
+@media (max-width: 575px) {
+  .nav-link-text {
+    display: none;
+  }
+  
+  .nav-link {
+    padding: 10px 12px !important;
+  }
+  
+  .nav-link i {
+    font-size: 1.3rem;
+  }
+  
+  #cart-count {
+    min-width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+    top: -4px;
+    right: -6px;
+    padding: 0 3px;
+    border: 2px solid white;
+    line-height: 22px;
+    font-weight: bold;
+  }
+  
+  #navbar-auth-area {
+    width: 100%;
+  }
+  
+  #navbar-auth-area .dropdown-toggle,
+  #navbar-auth-area .btn-outline-dark {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .mobile-action-links .mobile-quick-text {
+    display: none;
+  }
+}

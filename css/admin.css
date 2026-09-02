@@ -1,0 +1,526 @@
+/* css/admin.css - Admin-specific styles only */
+/* BACKEND_CLUE: No backend changes needed - pure frontend styling */
+
+/* Admin Dashboard Stats Cards */
+.admin-stat-card {
+  border-left: 4px solid #007bff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.admin-stat-card .fs-3 {
+  color: #007bff;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.admin-stat-card small {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Admin Table Cards */
+.admin-table-card {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.admin-table-card .table {
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.admin-table-card .table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+  padding: 15px 12px;
+}
+
+.admin-table-card .table td {
+  vertical-align: middle;
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.admin-table-card .table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Button styles for admin actions */
+.btn-admin-edit,
+.btn-admin-delete {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  margin: 0 3px;
+}
+
+.btn-admin-edit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-admin-edit:hover {
+  background-color: #0056b3;
+}
+
+.btn-admin-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.btn-admin-delete:hover {
+  background-color: #c82333;
+}
+
+/* Modal adjustments for admin */
+#productModal .modal-header {
+  background: linear-gradient(45deg, #2c3e50, #4a6491);
+}
+
+#productModal .form-control:focus,
+#productModal .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Badge styles for order status */
+.status-badge {
+  padding: 5px 12px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+.status-processing {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.status-shipped {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.status-delivered {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-cancelled {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-pending {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Role badges */
+.role-badge {
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  border-radius: 12px;
+}
+
+.role-admin {
+  background-color: #6610f2;
+  color: white;
+}
+
+.role-user {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* ============================================ */
+/* LEFT SIDEBAR STYLES FOR ADMIN DASHBOARD      */
+/* ============================================ */
+
+.admin-dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
+.admin-sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    position: sticky;
+    top: 0;
+    min-height: 100vh; /* CHANGE: Changed from height: 100vh to min-height: 100vh to allow sidebar to extend with content */
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+/* Hide scrollbar on sidebar for cleaner look */
+.admin-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 5px;
+}
+
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.sidebar-header h3 i {
+    margin-right: 10px;
+}
+
+.sidebar-nav {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dropdown Styles */
+.sidebar-nav-dropdown {
+    width: 100%;
+}
+
+.sidebar-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 14px 25px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-nav-btn.dropdown-toggle {
+    cursor: pointer;
+}
+
+.sidebar-nav-btn .dropdown-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.sidebar-nav-btn.dropdown-toggle[aria-expanded="true"] .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.sidebar-nav-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-left-color: #007bff;
+}
+
+.sidebar-nav-btn.active {
+    background: rgba(0,123,255,0.2);
+    color: white;
+    border-left-color: #007bff;
+}
+
+.sidebar-nav-btn i:first-child {
+    width: 24px;
+    font-size: 1.2rem;
+}
+
+/* Dropdown Menu Custom */
+.dropdown-menu-custom {
+    background: rgba(0,0,0,0.3);
+    display: none;
+    padding: 5px 0;
+}
+
+.dropdown-menu-custom.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item-category {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 25px 10px 55px;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-item-category:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-left-color: #007bff;
+}
+
+.dropdown-item-category.active {
+    background: rgba(0,123,255,0.15);
+    color: white;
+    border-left-color: #007bff;
+}
+
+.dropdown-item-category i {
+    width: 20px;
+    font-size: 1rem;
+}
+
+.admin-main-content {
+    flex: 1;
+    padding: 25px;
+    overflow-x: auto;
+}
+
+.admin-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon i {
+    font-size: 28px;
+    color: white;
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+}
+
+.stat-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tab-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.filter-indicator {
+    display: block;
+}
+
+.filter-indicator .badge {
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.filter-indicator .badge button {
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.filter-indicator .badge button:hover {
+    opacity: 1;
+}
+
+.admin-tab-content {
+    display: none;
+}
+
+.admin-tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Table responsive with max-height for scrolling */
+.admin-tab-content .table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    background: white;
+}
+
+.admin-tab-content .table-responsive thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 10;
+}
+
+/* Responsive sidebar for mobile */
+@media (max-width: 992px) {
+    .admin-dashboard-wrapper {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+    .sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+    }
+    .sidebar-nav-btn {
+        width: auto;
+        padding: 10px 20px;
+        border-left: none;
+        border-radius: 25px;
+    }
+    .sidebar-nav-btn.active {
+        border-left: none;
+    }
+    .sidebar-nav-dropdown {
+        position: relative;
+        width: auto;
+    }
+    .dropdown-menu-custom {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 180px;
+        background: #1a1a2e;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 100;
+    }
+    .dropdown-item-category {
+        padding: 10px 20px;
+    }
+    .admin-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-stats-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .admin-main-content {
+        padding: 15px;
+    }
+    .sidebar-nav {
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    .sidebar-nav-btn {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 140px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 0.92rem;
+    }
+    .sidebar-nav-btn i {
+        font-size: 1rem;
+    }
+    .admin-tab-content {
+        margin-top: 1rem;
+    }
+    .table-responsive {
+        overflow-x: auto;
+    }
+    .admin-tab-content .table th,
+    .admin-tab-content .table td {
+        padding: 10px 8px;
+    }
+    .tab-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+}

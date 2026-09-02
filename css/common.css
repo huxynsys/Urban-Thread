@@ -1,0 +1,437 @@
+/* common.css - Common styles for ALL pages */
+/* BACKEND_CLUE: No backend changes needed - pure frontend styling */
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Logo Styles */
+.logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: brightness(1.2);
+}
+
+.logo-footer {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #ffffff, #ffc107);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+
+
+/* ========== SEARCH BAR BELOW NAVBAR ========== */
+.search-section {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+  padding: 30px 0;
+  margin-bottom: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.search-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: cover;
+  opacity: 0.1;
+}
+
+.search-title {
+  color: #ffc107;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#main-search-form {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+#main-search-input {
+  flex: 1;
+  padding: 18px 25px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+#main-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#main-search-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+#main-search-btn {
+  padding: 0 30px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ffc107, #ffda6a);
+  color: #0f0f1a;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#main-search-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 193, 7, 0.4);
+}
+
+/* Search Results */
+#main-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+  display: none;
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-search-result-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.main-search-result-item:hover {
+  background: rgba(255, 193, 7, 0.15);
+  transform: translateX(5px);
+}
+
+.main-search-result-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ffc107;
+}
+
+.main-search-result-item .search-item-info {
+  flex: 1;
+}
+
+.main-search-result-item .search-item-name {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.main-search-result-item .search-item-price {
+  color: #ffc107;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.main-search-result-item .search-item-category {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* ========== FOOTER STYLES ========== */
+footer {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+  color: white;
+  padding: 50px 0 20px;
+  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(45deg, #ffc107, #ffda6a);
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.footer-logo h3 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  background: linear-gradient(45deg, #ffffff, #ffc107);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-about p {
+  color: #adb5bd;
+  line-height: 1.8;
+}
+
+.footer-links h5,
+.footer-connect h5 {
+  color: #ffc107;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-links h5::after,
+.footer-connect h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(45deg, #ffc107, #ffda6a);
+  border-radius: 2px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links a:hover {
+  color: #ffc107;
+  transform: translateX(10px);
+}
+
+.footer-links a i {
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: linear-gradient(45deg, #ffc107, #ffda6a);
+  transform: translateY(-5px) rotate(10deg);
+  color: #0f0f1a;
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #adb5bd;
+  font-size: 0.9rem;
+}
+
+/* ========== FLOATING BACK TO TOP BUTTON ========== */
+.btn-floating-top {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+  color: #ffc107;
+  border: 2px solid #ffc107;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-floating-top:hover {
+  transform: scale(1.1) translateY(-5px);
+  background: #ffc107;
+  color: #0f0f1a;
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 991px) {
+  .search-container {
+    padding: 0 20px;
+  }
+  
+  #main-search-form {
+    flex-direction: column;
+  }
+  
+  #main-search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-text {
+    font-size: 1.2rem;
+  }
+  
+  .search-title {
+    font-size: 1.5rem;
+  }
+  
+  #main-search-input {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+  
+  .btn-floating-top {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    right: 15px;
+    bottom: 80px;
+  }
+  
+  .footer-logo h3 {
+    font-size: 1.4rem;
+  }
+  
+  .footer-logo img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .logo-footer {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 575px) {
+  .brand-text {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .footer-logo img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .logo-footer {
+    width: 70px;
+    height: 70px;
+  }
+}

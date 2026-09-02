@@ -1,0 +1,13 @@
+=== served js/contact.js fetch URLs ===
+fetch('/urban-thread/api/contact/submit.php', {            method: 'POST',            headers: { 'Content-Type': 'application/json' },            body: JSON.stringify({ name, email, subject, message }
+=== local js/contact.js fetch URLs ===
+fetch('/urban-thread/api/contact/submit.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message }
+=== served index.php product links (unique) ===
+
+=== served js/index.js product links (unique) ===
+
+=== served js/shop.js product links (unique) ===
+product.php?id=${p.id}

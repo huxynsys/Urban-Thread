@@ -1,0 +1,55 @@
+/* css/account.css - Account page specific styles */
+/* BACKEND_CLUE: No backend changes needed - pure frontend styling */
+
+body {
+  background: #f8f9fa;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  color: #222;
+}
+.logo {
+  width: 38px;
+  vertical-align: middle;
+}
+
+.card {
+  border-radius: 12px;
+}
+.btn {
+  border-radius: 22px;
+  font-size: 1rem;
+}
+#profile-details {
+  font-size: 1.08rem;
+}
+#order-history .order-card {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 6px #eee;
+}
+#account-wishlist .wishlist-card {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 4px #eee;
+  text-align: center;
+}
+#account-wishlist .wishlist-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+footer {
+  font-size: 0.95rem;
+}
+footer a {
+  text-decoration: underline;
+}
+@media (max-width: 767px) {
+  .card {
+    padding: 10px;
+  }
+}
