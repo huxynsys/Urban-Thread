@@ -1,0 +1,305 @@
+# DNotifier Guard security report
+*Urban-Thread-master · 10/25/2026, 12:45:31 AM · 69 files scanned*
+
+**Security score: 0/100** — 0 critical, 5 high, 94 medium, 0 low
+
+## Secrets & credentials (2)
+- **[HIGH] Hardcoded password** — `api/auth/register.php:11` (CWE-259)
+  - A password literal is assigned in source.
+  - Fix: Never store passwords in code. Use environment variables or a secrets manager and rotate this password.
+- **[HIGH] Hardcoded password** — `api/auth/register.php:12` (CWE-259)
+  - A password literal is assigned in source.
+  - Fix: Never store passwords in code. Use environment variables or a secrets manager and rotate this password.
+
+## Code weaknesses (97)
+- **[HIGH] Possible SQL injection (string-built query)** — `account.php:42` (CWE-89)
+  - A SQL statement is assembled by string concatenation/interpolation, which is exploitable if any part is user-controlled.
+  - Fix: Use parameterized queries / prepared statements (e.g. db.query('... WHERE id = $1', [id])).
+- **[HIGH] Possible SQL injection (string-built query)** — `account.php:70` (CWE-89)
+  - A SQL statement is assembled by string concatenation/interpolation, which is exploitable if any part is user-controlled.
+  - Fix: Use parameterized queries / prepared statements (e.g. db.query('... WHERE id = $1', [id])).
+- **[HIGH] Possible SQL injection (string-built query)** — `js/common.js:92` (CWE-89)
+  - A SQL statement is assembled by string concatenation/interpolation, which is exploitable if any part is user-controlled.
+  - Fix: Use parameterized queries / prepared statements (e.g. db.query('... WHERE id = $1', [id])).
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:65` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:80` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:103` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:125` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:129` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:165` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:170` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:192` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:199` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:231` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:242` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/account.js:403` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:335` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:383` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:476` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:504` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:605` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:635` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:671` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:705` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:796` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:813` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:830` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:841` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/admin.js:1120` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/authNavbar.js:34` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/authNavbar.js:78` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/authNavbar.js:91` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/authNavbar.js:168` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:105` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:193` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:207` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:329` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:348` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:423` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/card.js:449` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/cart.js:257` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/cart.js:263` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/cart.js:266` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/cart.js:358` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/common.js:44` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/common.js:70` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/common.js:123` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/common.js:125` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/contact.js:50` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/contact.js:80` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/faq.js:107` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/faq.js:114` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/faq.js:165` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/index.js:29` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/index.js:52` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/index.js:135` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:80` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:108` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:119` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:133` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:136` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:148` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:179` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:189` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:227` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:231` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:249` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:253` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:438` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:441` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:470` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:477` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:501` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/product.js:531` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:234` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:237` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:448` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:459` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:483` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:512` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/reg.js:677` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/returns.js:156` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:57` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:78` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:134` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:154` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:200` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:273` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:285` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:444` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:491` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:587` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:610` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:631` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:664` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:703` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:718` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
+- **[MEDIUM] DOM XSS sink (innerHTML / document.write)** — `js/shop.js:863` (CWE-79)
+  - Writing untrusted data into the DOM as HTML enables cross-site scripting.
+  - Fix: Use textContent, framework escaping, or sanitize with DOMPurify before inserting HTML.
